@@ -26,5 +26,30 @@
 
     <artifactId>terefang-gdx-contrib-gdf-libgdfonts</artifactId>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <id>inst</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>${project.artifactId}</artifactId>
+                    <version>${project.version}</version>
+                    <packaging>jar</packaging>
+                    <file>target/${build.finalName}.jar</file>
+                    <localRepositoryPath>../maven-repo</localRepositoryPath>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
