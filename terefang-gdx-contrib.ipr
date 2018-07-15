@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="contrib-gdf" />
+        <module name="contrib-gdf-cfonts" />
+        <module name="contrib-gdf-libgdfonts" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="contrib-gdf" target="6" />
+      <module name="contrib-gdf-cfonts" target="6" />
+      <module name="contrib-gdf-libgdfonts" target="6" />
+      <module name="terefang-gdx-contrib" target="6" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="CopyrightManager" default="ASL2">
+    <copyright>
+      <option name="myName" value="ASL2" />
+      <option name="notice" value="Copyright (c) &amp;#36;today.year. terefang@gmail.com&#10;&#10;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#10;you may not use this file except in compliance with the License.&#10;You may obtain a copy of the License at&#10;&#10;    http://www.apache.org/licenses/LICENSE-2.0&#10;&#10;Unless required by applicable law or agreed to in writing, software&#10;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#10;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#10;See the License for the specific language governing permissions and&#10;limitations under the License." />
+    </copyright>
+    <LanguageOptions name="__TEMPLATE__">
+      <option name="addBlankAfter" value="false" />
+    </LanguageOptions>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="InspectionProjectProfileManager">
+    <profile version="1.0">
+      <option name="myName" value="Project Default" />
+    </profile>
+    <version value="1.0" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleConfiguration">
+    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default (1)" />
+    <code_scheme name="Project" version="173">
+      <XML>
+        <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
+      </XML>
+    </code_scheme>
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/contrib-gdf/contrib-gdf.iml" filepath="$PROJECT_DIR$/contrib-gdf/contrib-gdf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contrib-gdf-cfonts/contrib-gdf-cfonts.iml" filepath="$PROJECT_DIR$/contrib-gdf-cfonts/contrib-gdf-cfonts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contrib-gdf-libgdfonts/contrib-gdf-libgdfonts.iml" filepath="$PROJECT_DIR$/contrib-gdf-libgdfonts/contrib-gdf-libgdfonts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/terefang-gdx-contrib.iml" filepath="$PROJECT_DIR$/terefang-gdx-contrib.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="java-sdkman" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="libraryTable">
+    <library name="Maven: com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.8">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-backend-lwjgl/1.9.8/gdx-backend-lwjgl-1.9.8.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-backend-lwjgl/1.9.8/gdx-backend-lwjgl-1.9.8-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-backend-lwjgl/1.9.8/gdx-backend-lwjgl-1.9.8-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.badlogicgames.gdx:gdx-platform:1.9.8">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-platform/1.9.8/gdx-platform-1.9.8.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-platform/1.9.8/gdx-platform-1.9.8-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-platform/1.9.8/gdx-platform-1.9.8-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.8">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-platform/1.9.8/gdx-platform-1.9.8-natives-desktop.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-platform/1.9.8/gdx-platform-1.9.8-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx-platform/1.9.8/gdx-platform-1.9.8-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.badlogicgames.gdx:gdx:1.9.8">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx/1.9.8/gdx-1.9.8.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx/1.9.8/gdx-1.9.8-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/gdx/gdx/1.9.8/gdx-1.9.8-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.badlogicgames.jlayer:jlayer:1.0.1-gdx">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/jlayer/jlayer/1.0.1-gdx/jlayer-1.0.1-gdx.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/jlayer/jlayer/1.0.1-gdx/jlayer-1.0.1-gdx-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/badlogicgames/jlayer/jlayer/1.0.1-gdx/jlayer-1.0.1-gdx-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.java.jinput:jinput-platform:natives-linux:2.0.5">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-linux.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.java.jinput:jinput-platform:natives-osx:2.0.5">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-osx.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.java.jinput:jinput-platform:natives-windows:2.0.5">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-windows.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.java.jinput:jinput:2.0.5">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput/2.0.5/jinput-2.0.5-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jinput/jinput/2.0.5/jinput-2.0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.java.jutils:jutils:1.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jutils/jutils/1.0.0/jutils-1.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/jutils/jutils/1.0.0/jutils-1.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.jcraft:jorbis:0.0.17">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/jcraft/jorbis/0.0.17/jorbis-0.0.17.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/jcraft/jorbis/0.0.17/jorbis-0.0.17-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/jcraft/jorbis/0.0.17/jorbis-0.0.17-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-natives-linux.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-natives-osx.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-natives-windows.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl-platform/2.9.2/lwjgl-platform-2.9.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.lwjgl.lwjgl:lwjgl:2.9.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl/2.9.2/lwjgl-2.9.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl/2.9.2/lwjgl-2.9.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl/2.9.2/lwjgl-2.9.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.lwjgl.lwjgl:lwjgl_util:2.9.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl_util/2.9.2/lwjgl_util-2.9.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl_util/2.9.2/lwjgl_util-2.9.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/lwjgl/lwjgl/lwjgl_util/2.9.2/lwjgl_util-2.9.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+  </component>
+</project>
