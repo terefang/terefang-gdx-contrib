@@ -28,6 +28,8 @@ see modules README for further details.
 
 ### usage
 
+always and only current artefacts are available from local github
+
 ```xml
 
     <repositories>
