@@ -26,3 +26,15 @@ classpath packed fonts
 
 see modules README for further details.
 
+### usage
+
+```xml
+
+    <repositories>
+        <repository>
+            <id>terefang-gdx-contrib-maven-repo</id>
+            <url>https://raw.githubusercontent.com/terefang/terefang-gdx-contrib/master/maven-repo/</url>
+        </repository>
+    </repositories>
+
+```
