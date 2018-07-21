@@ -26,6 +26,7 @@
         <module>contrib-gdf</module>
         <module>contrib-gdf-libgdfonts</module>
         <module>contrib-gdf-cfonts</module>
+        <module>contrib-3d-skybox</module>
     </modules>
 
     <packaging>pom</packaging>
