@@ -15,73 +15,114 @@
  */
 package terefang.gdx.contrib.g3d;
 
-import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 /**
  * Created by fredo on 03.07.17.
  */
-public class Stage3D  extends InputAdapter implements Disposable
+public class Stage3D  implements InputProcessor, Disposable
 {
-	private final Viewport viewport;
+	Viewport viewport;
 	
-	public Stage3D(Viewport viewport)
+	InputProcessor inputProcessor;
+	
+	public Stage3D()
 	{
-		this.viewport = viewport;
+		super();
 	}
+	
+	public static final Stage3D create() { return new Stage3D(); }
 	
 	public Viewport getViewport()
 	{
 		return viewport;
 	}
 	
-	@Override
-	public boolean keyDown(int keycode)
+	public void setViewport(Viewport viewport)
 	{
-		return super.keyDown(keycode);
+		this.viewport = viewport;
+	}
+	
+	public Stage3D viewport(Viewport viewport)
+	{
+		this.setViewport(viewport);
+		return this;
+	}
+	
+	public InputProcessor getInputProcessor()
+	{
+		return inputProcessor;
+	}
+	
+	public void setInputProcessor(InputProcessor inputProcessor)
+	{
+		this.inputProcessor = inputProcessor;
+	}
+	
+	public Stage3D inputProcessor(InputProcessor inputProcessor)
+	{
+		this.setInputProcessor(inputProcessor);
+		return this;
 	}
 	
 	@Override
-	public boolean keyUp(int keycode)
+	public boolean keyDown(int i)
 	{
-		return super.keyUp(keycode);
+		return inputProcessor.keyDown(i);
 	}
 	
 	@Override
-	public boolean keyTyped(char character)
+	public boolean keyUp(int i)
 	{
-		return super.keyTyped(character);
+		return inputProcessor.keyUp(i);
 	}
 	
 	@Override
-	public boolean touchDown(int screenX, int screenY, int pointer, int button)
+	public boolean keyTyped(char c)
 	{
-		return super.touchDown(screenX, screenY, pointer, button);
+		return inputProcessor.keyTyped(c);
 	}
 	
 	@Override
-	public boolean touchUp(int screenX, int screenY, int pointer, int button)
+	public boolean touchDown(int i, int i1, int i2, int i3)
 	{
-		return super.touchUp(screenX, screenY, pointer, button);
+		return inputProcessor.touchDown(i, i1, i2, i3);
 	}
 	
 	@Override
-	public boolean touchDragged(int screenX, int screenY, int pointer)
+	public boolean touchUp(int i, int i1, int i2, int i3)
 	{
-		return super.touchDragged(screenX, screenY, pointer);
+		return inputProcessor.touchUp(i, i1, i2, i3);
 	}
 	
 	@Override
-	public boolean mouseMoved(int screenX, int screenY)
+	public boolean touchDragged(int i, int i1, int i2)
 	{
-		return super.mouseMoved(screenX, screenY);
+		return inputProcessor.touchDragged(i, i1, i2);
 	}
 	
 	@Override
-	public boolean scrolled(int amount)
+	public boolean mouseMoved(int i, int i1)
 	{
-		return super.scrolled(amount);
+		return inputProcessor.mouseMoved(i, i1);
+	}
+	
+	@Override
+	public boolean scrolled(int i)
+	{
+		return inputProcessor.scrolled(i);
+	}
+	
+	public void resize(int width, int height)
+	{
+		this.getViewport().update(width,height);
+	}
+	
+	public void update()
+	{
+		
 	}
 	
 	public void dispose()

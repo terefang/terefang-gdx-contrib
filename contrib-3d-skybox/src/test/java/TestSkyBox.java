@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g3d.utils.DefaultTextureBinder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import terefang.gdx.contrib.g3d.Stage3D;
 import terefang.gdx.contrib.g3d.skybox.SkyBox;
 import terefang.gdx.contrib.gdf.GdfBitmapFont;
@@ -48,23 +49,27 @@ public class TestSkyBox implements ApplicationListener
 	long countFps = 0;
 	long currentFps = 0;
 	private PerspectiveCamera camera;
-	private FillViewport viewport;
+	private ScreenViewport viewport;
 	private Stage3D stage;
 	private Environment environment;
-	private ModelBatch modelBatch;
 	private CameraInputController camController;
 	private SkyBox skybox;
 	private RenderContext renderContext;
+	private OrthographicCamera hudCam;
 	
 	@Override
 	public void create()
 	{
 		{
+			this.camera = new PerspectiveCamera(60, this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
+			this.viewport = new ScreenViewport(this.camera);
+			this.stage = Stage3D.create().viewport(this.viewport);
+			this.hudCam = new OrthographicCamera();
+		}
+		{
 			this.environment = new Environment();
 			this.environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
 			this.environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
-			
-			this.modelBatch = new ModelBatch();
 			
 			this.camera.position.set(10f, 10f, 10f);
 			this.camera.lookAt(0,0,0);
@@ -73,9 +78,8 @@ public class TestSkyBox implements ApplicationListener
 			this.camera.update();
 			
 			this.camController = new CameraInputController(this.camera);
-			
-			this.application.getInput().setInputProcessor(this.camController);
-			
+			this.stage.setInputProcessor(this.camController);
+			this.application.getInput().setInputProcessor(this.stage);
 			
 			this.skybox = new SkyBox(
 				Gdx.files.internal("data/sky.0.png"),
@@ -132,7 +136,8 @@ public class TestSkyBox implements ApplicationListener
 		
 		{
 			this.camController.update();
-			this.skybox.draw(this.camera, this.renderContext);
+			this.stage.update();
+			this.skybox.draw(this.stage, this.renderContext);
 		}
 		
 		{
@@ -145,8 +150,10 @@ public class TestSkyBox implements ApplicationListener
 	@Override
 	public void resize(int width, int height)
 	{
-		this.stage.getViewport().update(width,height);
-		this.batch.getProjectionMatrix().setToOrtho2D(0.0F, 0.0F, (float)width, (float)height);
+		this.stage.resize(width,height);
+		this.hudCam.setToOrtho(false, width, height);
+		this.hudCam.update();
+		this.batch.setProjectionMatrix(this.hudCam.combined);
 	}
 
 	@Override
@@ -167,8 +174,5 @@ public class TestSkyBox implements ApplicationListener
 		config.fullscreen = false;
 		TestSkyBox t = new TestSkyBox();
 		t.application = new LwjglApplication(t, config);
-		t.camera = new PerspectiveCamera(60, 600, 600);
-		t.viewport = new FillViewport(800, 600, t.camera);
-		t.stage = new Stage3D(t.viewport);
 	}
 }
