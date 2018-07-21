@@ -255,9 +255,7 @@ public class GdfBitmapFont extends BitmapFont
 					{
 						st.nextToken();
 						pixmap.setPixel(srcX + x, srcY + y, (st.nval == 0 ? 0 : 0xFFFFffff));
-						//	System.err.print(st.nval == 0 ? "." : "*");
 					}
-					//System.err.println();
 				}
 				ci++;
 			}
