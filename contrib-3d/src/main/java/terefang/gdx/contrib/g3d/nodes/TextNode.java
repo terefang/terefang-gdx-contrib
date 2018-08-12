@@ -17,6 +17,7 @@ package terefang.gdx.contrib.g3d.nodes;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
@@ -36,11 +37,17 @@ public class TextNode extends AbstractScene3dNode<TextNode> implements IScene3dN
 	{
 		this.updateAbsolutePosition();
 		
-		Vector2 pos = vp.getScreenCoordinatesFrom3DPosition(this.getAbsolutePosition(new Vector3()));
-		this.batch.begin();
-		this.getFont().draw(vp, this.batch, this.getText(), this.getTextColor(), pos.x, pos.y);
-		this.batch.end();
+		Vector3 tmpVec3 = new Vector3();
+		Vector3 textPosition = this.getAbsolutePosition(new Vector3());
+		tmpVec3.set(vp.getCamera().position).sub(textPosition);
 		
+		Matrix4 textTransform = new Matrix4(this.getAbsoluteTransformation());
+		textTransform.setToTranslation(textPosition).rotate(Vector3.Z, tmpVec3);
+		
+		this.batch.setProjectionMatrix(textTransform);
+		this.batch.begin();
+		this.getFont().draw(vp, this.batch, this.getText(), this.getTextColor(), 0,0);
+		this.batch.end();
 		
 		super.render(vp);
 	}
