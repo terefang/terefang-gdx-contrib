@@ -21,12 +21,13 @@
 
     <groupId>terefang.gdx</groupId>
     <artifactId>terefang-gdx-contrib</artifactId>
-    <version>1.9.2018.7</version>
+    <version>1.9.2018.8</version>
     <modules>
         <module>contrib-gdf</module>
         <module>contrib-gdf-libgdfonts</module>
         <module>contrib-gdf-cfonts</module>
         <module>contrib-3d-skybox</module>
+        <module>contrib-3d</module>
     </modules>
 
     <packaging>pom</packaging>

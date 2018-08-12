@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package terefang.gdx.contrib.g3d;import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
+package terefang.gdx.contrib.g3d;
 
-/**
- * Created by fredo on 04.07.17.
- */
-public interface Drawable
+public interface IScene3dIdable
 {
-	public void draw(Camera camera, RenderContext renderContext);
+	int getId();
+	
+	void setId(int id);
 }

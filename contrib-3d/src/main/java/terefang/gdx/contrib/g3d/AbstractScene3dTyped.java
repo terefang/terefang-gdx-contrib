@@ -13,29 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package terefang.gdx.contrib.g3d.skybox;
+package terefang.gdx.contrib.g3d;
 
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Pixmap;
-
-/**
- * Created by fredo on 04.07.17.
- */
-public class SkyBox extends EnvironmentCubemap
+public class AbstractScene3dTyped extends AbstractScene3dNamed implements IScene3dTyped
 {
-	public SkyBox(Pixmap cubemap)
+	String typeName = "null";
+	
+	@Override
+	public String getTypeName()
 	{
-		super(cubemap);
+		return typeName;
 	}
 	
-	public SkyBox(FileHandle f0)
+	public void setTypeName(String typeName)
 	{
-		super(f0);
+		this.typeName = typeName;
 	}
-	
-	public SkyBox(FileHandle f0, FileHandle f1, FileHandle f2, FileHandle f3, FileHandle f4, FileHandle f5)
-	{
-		super(f0, f1, f2, f3, f4, f5);
-	}
-	
 }

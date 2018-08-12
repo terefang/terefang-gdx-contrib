@@ -20,7 +20,7 @@
     <parent>
         <artifactId>terefang-gdx-contrib</artifactId>
         <groupId>terefang.gdx</groupId>
-        <version>1.9.2018.7</version>
+        <version>1.9.2018.8</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -37,6 +37,11 @@
             <artifactId>terefang-gdx-contrib-gdf</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>terefang.gdx</groupId>
+            <artifactId>terefang-gdx-contrib-3d</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>

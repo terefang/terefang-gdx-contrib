@@ -20,7 +20,7 @@
     <parent>
         <artifactId>terefang-gdx-contrib</artifactId>
         <groupId>terefang.gdx</groupId>
-        <version>1.9.2018.7</version>
+        <version>1.9.2018.8</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

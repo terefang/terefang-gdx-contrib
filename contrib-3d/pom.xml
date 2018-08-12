@@ -24,13 +24,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>terefang-gdx-contrib-gdf</artifactId>
-
+    <artifactId>terefang-gdx-contrib-3d</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.badlogicgames.gdx</groupId>
             <artifactId>gdx-platform</artifactId>
             <version>${gdx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>terefang.gdx</groupId>
+            <artifactId>terefang-gdx-contrib-gdf</artifactId>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -50,7 +54,7 @@
 
     <build>
         <plugins>
-            <plugin>
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <executions>
@@ -70,7 +74,16 @@
                     <file>target/${build.finalName}.jar</file>
                     <localRepositoryPath>../maven-repo</localRepositoryPath>
                 </configuration>
+            </plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>

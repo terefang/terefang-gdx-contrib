@@ -1,23 +1,24 @@
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.loaders.resolvers.ClasspathFileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g3d.*;
+import com.badlogic.gdx.graphics.g3d.Environment;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
-import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultTextureBinder;
-import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import terefang.gdx.contrib.g3d.Stage3D;
-import terefang.gdx.contrib.g3d.skybox.SkyBox;
+import com.badlogic.gdx.math.Vector3;
+import terefang.gdx.contrib.g3d.IScene3dNode;
+import terefang.gdx.contrib.g3d.impl.Scene3dFontImpl;
+import terefang.gdx.contrib.g3d.impl.Scene3dViewportImpl;
+import terefang.gdx.contrib.g3d.nodes.TextNode;
 import terefang.gdx.contrib.gdf.GdfBitmapFont;
 
 import java.io.IOException;
@@ -37,36 +38,48 @@ import java.io.IOException;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-public class TestSkyBox implements ApplicationListener
+public class Test3D implements ApplicationListener
 {
-	ClasspathFileHandleResolver resolver = new ClasspathFileHandleResolver();
-	LwjglApplication application;
-
-	private SpriteBatch batch;
-	private BitmapFont font;
-	long startFps = 0;
-	long stopFps = 0;
-	long countFps = 0;
-	long currentFps = 0;
+	private LwjglApplication application;
 	private PerspectiveCamera camera;
-	private ScreenViewport viewport;
-	private Stage3D stage;
+	private Scene3dViewportImpl viewport;
 	private Environment environment;
 	private CameraInputController camController;
-	private SkyBox skybox;
-	private RenderContext renderContext;
 	private OrthographicCamera hudCam;
+	private SpriteBatch batch;
+	private BitmapFont font;
+	private long startFps;
+	private long stopFps;
+	private long countFps;
+	private long currentFps;
+	private IScene3dNode<TextNode> rootNode;
+	private RenderContext renderContext;
 	
 	@Override
 	public void create()
 	{
 		{
-			this.camera = new PerspectiveCamera(60, this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
-			this.viewport = new ScreenViewport(this.camera);
-			this.stage = Stage3D.create().viewport(this.viewport);
-			this.hudCam = new OrthographicCamera();
+			try
+			{
+				this.font = GdfBitmapFont.create(null, null);
+				this.font.setColor(Color.WHITE);
+			}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		{
+			this.camera = new PerspectiveCamera(60, this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
+			this.viewport = Scene3dViewportImpl.create(this.camera);
+			this.viewport.resize(this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
+			
+			this.rootNode = new TextNode.Factory().createSceneNode(null);
+			this.rootNode.getNode().setFont(Scene3dFontImpl.create(this.font));
+			this.rootNode.getNode().setText("Hellow World");
+			this.rootNode.getNode().setTextColor(Color.GOLD);
+			this.rootNode.getNode().setRelativeTranslation(new Vector3(5,5,5));
+			
 			this.environment = new Environment();
 			this.environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
 			this.environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
@@ -77,45 +90,24 @@ public class TestSkyBox implements ApplicationListener
 			this.camera.far = 300f;
 			this.camera.update();
 			
-			this.camController = new CameraInputController(this.camera);
-			this.stage.setInputProcessor(this.camController);
-			this.application.getInput().setInputProcessor(this.stage);
-			
-			this.skybox = new SkyBox(
-				Gdx.files.internal("data/sky.0.png"),
-				Gdx.files.internal("data/sky.2.png"),
-				Gdx.files.internal("data/sky.4.png"),
-				Gdx.files.internal("data/sky.5.png"),
-				Gdx.files.internal("data/sky.3.png"),
-				Gdx.files.internal("data/sky.1.png")
-				/*
-					Gdx.files.internal("data/SKY_BLUE.JPG")
-				*/
-			);
 			this.renderContext = new RenderContext(new DefaultTextureBinder(DefaultTextureBinder.WEIGHTED, 1));
+			
+			this.camController = new CameraInputController(this.camera);
+			this.application.getInput().setInputProcessor(this.camController);
 		}
 		{
+			this.hudCam = new OrthographicCamera();
 			this.batch = new SpriteBatch();
-			try
-			{
-				this.font = GdfBitmapFont.create(null, null);
-				this.font.setColor(Color.WHITE);
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}
 			this.startFps = this.stopFps = System.currentTimeMillis();
 		}
 	}
-
+	
 	@Override
 	public void dispose() {
 		this.batch.dispose();
 		this.font.dispose();
-		this.skybox.dispose();
 	}
-
+	
 	@Override
 	public void render()
 	{
@@ -123,7 +115,7 @@ public class TestSkyBox implements ApplicationListener
 			this.countFps++;
 			this.stopFps = System.currentTimeMillis();
 			Gdx.gl.glClearColor(0, 0, 0, 0);
-			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT|GL20.GL_DEPTH_BUFFER_BIT);
+			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 			
 			long deltaFps = this.stopFps-this.startFps;
 			if(deltaFps > 1000L)
@@ -136,32 +128,33 @@ public class TestSkyBox implements ApplicationListener
 		
 		{
 			this.camController.update();
-			this.stage.update();
-			this.skybox.draw(this.stage, this.renderContext);
+			this.renderContext.begin();
+			this.rootNode.render(this.viewport);
+			this.renderContext.end();
 		}
 		
 		{
 			this.batch.begin();
-			this.font.draw(this.batch, "FPS:"+this.currentFps+" -- SkyMap Test", 10, 10);
+			this.font.draw(this.batch, "FPS:"+this.currentFps+" -- scene Test -- p="+this.camera.position+" d="+this.camera.direction, 0, 0);
 			this.batch.end();
 		}
 	}
-
+	
 	@Override
 	public void resize(int width, int height)
 	{
-		this.stage.resize(width,height);
+		this.viewport.resize(width,height);
 		this.hudCam.setToOrtho(false, width, height);
 		this.hudCam.update();
 		this.batch.setProjectionMatrix(this.hudCam.combined);
 	}
-
+	
 	@Override
 	public void pause() { }
-
+	
 	@Override
 	public void resume() { }
-
+	
 	public static void main(String[] args) throws Exception
 	{
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
@@ -169,10 +162,10 @@ public class TestSkyBox implements ApplicationListener
 		config.vSyncEnabled = true;
 		config.width = 800;
 		config.height = 600;
-		config.title = "Terefang LibGDX Contrib SKYMAP Example";
+		config.title = "Terefang LibGDX Contrib 3d Example";
 		config.resizable = true;
 		config.fullscreen = false;
-		TestSkyBox t = new TestSkyBox();
+		Test3D t = new Test3D();
 		t.application = new LwjglApplication(t, config);
 	}
 }

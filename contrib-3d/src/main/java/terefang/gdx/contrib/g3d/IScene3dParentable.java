@@ -13,29 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package terefang.gdx.contrib.g3d.skybox;
+package terefang.gdx.contrib.g3d;
 
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Pixmap;
+import java.util.Collection;
 
-/**
- * Created by fredo on 04.07.17.
- */
-public class SkyBox extends EnvironmentCubemap
+public interface IScene3dParentable<T>
 {
-	public SkyBox(Pixmap cubemap)
-	{
-		super(cubemap);
-	}
+	public T getParent();
 	
-	public SkyBox(FileHandle f0)
-	{
-		super(f0);
-	}
+	public void setParent(T parent);
 	
-	public SkyBox(FileHandle f0, FileHandle f1, FileHandle f2, FileHandle f3, FileHandle f4, FileHandle f5)
-	{
-		super(f0, f1, f2, f3, f4, f5);
-	}
+	public void setChildren(Collection<T> children);
 	
+	public Collection<T> getChildren();
+	
+	public void addChild(T newChild);
+	
+	public boolean removeChild(T child);
+	
+	public void remove();
 }

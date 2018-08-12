@@ -14,36 +14,21 @@
  * limitations under the License.
  */
 package terefang.gdx.contrib.g3d.skybox;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.*;
-import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.GdxRuntimeException;
-import terefang.gdx.contrib.g3d.Drawable;
-import terefang.gdx.contrib.g3d.Stage3D;
 
 /**
  * Created by fredo on 04.07.17.
  */
-public class EnvironmentCubemap implements Drawable, Disposable
+public class EnvironmentCubemap implements Disposable
 {
-	public void draw(Stage3D stage, RenderContext renderContext)
-	{
-		this.draw(stage.getViewport().getCamera(), renderContext);
-	}
-	
-	public void draw(Camera camera, RenderContext renderContext)
-	{
-		renderContext.begin();
-		this.render(camera);
-		renderContext.end();
-	}
-	
 	
 	Matrix4 tranformation;
 	ShaderProgram program;

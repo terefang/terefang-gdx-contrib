@@ -13,29 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package terefang.gdx.contrib.g3d.skybox;
+package terefang.gdx.contrib.g3d;
 
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
-/**
- * Created by fredo on 04.07.17.
- */
-public class SkyBox extends EnvironmentCubemap
+public interface IScene3dViewport
 {
-	public SkyBox(Pixmap cubemap)
-	{
-		super(cubemap);
-	}
+	Vector2 getScreenCoordinatesFrom3DPosition(Vector3 position);
 	
-	public SkyBox(FileHandle f0)
-	{
-		super(f0);
-	}
+	Matrix4 getViewMatrix();
 	
-	public SkyBox(FileHandle f0, FileHandle f1, FileHandle f2, FileHandle f3, FileHandle f4, FileHandle f5)
-	{
-		super(f0, f1, f2, f3, f4, f5);
-	}
+	Matrix4 getProjectionMatrix();
 	
+	Camera getCamera();
+	
+	int getScreenHeight();
+	
+	int getScreenWidth();
+	
+	void resize(int width, int height);
+	
+	void setEnvironment(Environment environment);
+	
+	Environment getEnvironment();
 }
