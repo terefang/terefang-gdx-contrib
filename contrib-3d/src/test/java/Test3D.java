@@ -2,22 +2,24 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.Material;
+import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultTextureBinder;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.math.Vector3;
 import terefang.gdx.contrib.g3d.IScene3dNode;
 import terefang.gdx.contrib.g3d.impl.Scene3dFontImpl;
 import terefang.gdx.contrib.g3d.impl.Scene3dViewportImpl;
+import terefang.gdx.contrib.g3d.nodes.ModelNode;
 import terefang.gdx.contrib.g3d.nodes.TextNode;
 import terefang.gdx.contrib.gdf.GdfBitmapFont;
 
@@ -52,8 +54,10 @@ public class Test3D implements ApplicationListener
 	private long stopFps;
 	private long countFps;
 	private long currentFps;
-	private IScene3dNode<TextNode> rootNode;
+	private ModelNode rootNode;
 	private RenderContext renderContext;
+	private Model model;
+	private TextNode textNode;
 	
 	@Override
 	public void create()
@@ -74,15 +78,22 @@ public class Test3D implements ApplicationListener
 			this.viewport = Scene3dViewportImpl.create(this.camera);
 			this.viewport.resize(this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
 			
-			this.rootNode = new TextNode.Factory().createSceneNode(null);
-			this.rootNode.getNode().setFont(Scene3dFontImpl.create(this.font));
-			this.rootNode.getNode().setText("Hellow World");
-			this.rootNode.getNode().setTextColor(Color.GOLD);
-			this.rootNode.getNode().setRelativeTranslation(new Vector3(5,5,5));
+			ModelBuilder modelBuilder = new ModelBuilder();
+			this.model = modelBuilder.createBox(5f, 5f, 5f,
+												new Material(ColorAttribute.createDiffuse(Color.GREEN)),
+												VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
+			this.rootNode = new ModelNode.Factory().createSceneNode(this.rootNode);
+			this.rootNode.setModelInstance(new ModelInstance(model));
 			
 			this.environment = new Environment();
 			this.environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
 			this.environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
+			this.viewport.setEnvironment(this.environment);
+			
+			this.textNode = new TextNode.Factory().createSceneNode(this.rootNode);
+			this.textNode.getNode().setFont(Scene3dFontImpl.create(this.font));
+			this.textNode.getNode().setText("Cube");
+			this.textNode.getNode().setTextColor(Color.GOLD);
 			
 			this.camera.position.set(10f, 10f, 10f);
 			this.camera.lookAt(0,0,0);
@@ -125,7 +136,6 @@ public class Test3D implements ApplicationListener
 				this.countFps = 0;
 			}
 		}
-		
 		{
 			this.camController.update();
 			this.renderContext.begin();

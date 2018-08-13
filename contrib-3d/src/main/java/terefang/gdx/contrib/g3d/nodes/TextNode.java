@@ -36,19 +36,16 @@ public class TextNode extends AbstractScene3dNode<TextNode> implements IScene3dN
 	public void render(IScene3dViewport vp)
 	{
 		this.updateAbsolutePosition();
-		// https://stackoverflow.com/questions/28245030/libgdx-draw-a-text-using-a-decals-to-3d-facing-camera
-		Vector3 tmpVec3 = new Vector3();
-		Vector3 textPosition = this.getAbsolutePosition(new Vector3());
-		tmpVec3.set(vp.getCamera().position).sub(textPosition);
 		
-		Matrix4 textTransform = new Matrix4(this.getAbsoluteTransformation());
-		textTransform.setToTranslation(textPosition).rotate(Vector3.Z, tmpVec3);
+		Vector2 pos = vp.getScreenCoordinatesFrom3DPosition(this.getAbsolutePosition(new Vector3()));
 		
-		this.batch.setProjectionMatrix(textTransform);
-		this.batch.begin();
-		this.getFont().draw(vp, this.batch, this.getText(), this.getTextColor(), 0,0);
-		this.batch.end();
-		
+		if(pos!=null)
+		{
+			this.batch.getProjectionMatrix().setToOrtho2D(0,0, vp.getScreenWidth(), vp.getScreenHeight());
+			this.batch.begin();
+			this.getFont().draw(vp, this.batch, this.getText(), this.getTextColor(), pos.x,pos.y);
+			this.batch.end();
+		}
 		super.render(vp);
 	}
 	

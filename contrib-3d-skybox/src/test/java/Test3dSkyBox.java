@@ -31,9 +31,11 @@ import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.math.Vector3;
 import terefang.gdx.contrib.g3d.IScene3dNode;
 import terefang.gdx.contrib.g3d.IScene3dViewport;
+import terefang.gdx.contrib.g3d.impl.Scene3dFontImpl;
 import terefang.gdx.contrib.g3d.impl.Scene3dViewportImpl;
 import terefang.gdx.contrib.g3d.nodes.ModelNode;
 import terefang.gdx.contrib.g3d.nodes.SkyBoxNode;
+import terefang.gdx.contrib.g3d.nodes.TextNode;
 import terefang.gdx.contrib.g3d.skybox.SkyBox;
 import terefang.gdx.contrib.gdf.GdfBitmapFont;
 
@@ -59,6 +61,7 @@ public class Test3dSkyBox implements ApplicationListener
 	private Model model;
 	private ModelNode instance;
 	private ModelBatch modelBatch;
+	private TextNode textNode;
 	
 	@Override
 	public void create()
@@ -116,6 +119,11 @@ public class Test3dSkyBox implements ApplicationListener
 			this.instance = new ModelNode.Factory().createSceneNode(this.rootNode);
 			this.instance.setModelInstance(new ModelInstance(model));
 			this.instance.setRelativeTranslation(new Vector3(5,5,5));
+			
+			this.textNode = new TextNode.Factory().createSceneNode(this.instance);
+			this.textNode.getNode().setFont(Scene3dFontImpl.create(this.font));
+			this.textNode.getNode().setText("Cube");
+			this.textNode.getNode().setTextColor(Color.GOLD);
 		}
 		{
 			this.hudCam = new OrthographicCamera();
