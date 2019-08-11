@@ -18,22 +18,23 @@ package terefang.gdx.contrib.g3d.impl;
 import com.badlogic.gdx.graphics.Camera;
 
 import com.badlogic.gdx.graphics.g3d.Environment;
-import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import terefang.gdx.contrib.g3d.IScene3dViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import terefang.gdx.contrib.g3d.IScene3dContext;
 
-public class Scene3dViewportImpl extends ScreenViewport implements IScene3dViewport
+public class Scene3dContextImpl extends ScreenViewport implements IScene3dContext
 {
-	public static Scene3dViewportImpl create(Camera camera)
+	public static Scene3dContextImpl create(Camera camera)
 	{
-		Scene3dViewportImpl s = new Scene3dViewportImpl(camera);
+		Scene3dContextImpl s = new Scene3dContextImpl(camera);
 		return s;
 	}
 	
-	Scene3dViewportImpl(Camera camera)
+	Scene3dContextImpl(Camera camera)
 	{
 		super(camera);
 	}
@@ -65,6 +66,12 @@ public class Scene3dViewportImpl extends ScreenViewport implements IScene3dViewp
 	}
 	
 	@Override
+	public Viewport getViewport()
+	{
+		return this;
+	}
+	
+	@Override
 	public void setEnvironment(Environment environment)
 	{
 		this.environment = environment;
@@ -73,8 +80,6 @@ public class Scene3dViewportImpl extends ScreenViewport implements IScene3dViewp
 	
 	public Vector2 getScreenCoordinatesFrom3DPosition(Vector3 pWorld)
 	{
-		// FROM https://www.scratchapixel.com/lessons/3d-basic-rendering/computing-pixel-coordinates-of-3d-point/mathematics-computing-2d-coordinates-of-3d-points
-		//	computePixelCoordinates(
 		final int imageWidth = this.getScreenWidth();
 		final int imageHeight = this.getScreenHeight();
 		
@@ -82,6 +87,10 @@ public class Scene3dViewportImpl extends ScreenViewport implements IScene3dViewp
 		
 		Vector3 pScreen = this.getCamera().project(pWorld, 0,0, imageWidth, imageHeight);
 		
+		if(pScreen.z > 1f)
+		{
+			return null;
+		}
 		return new Vector2(pScreen.x, pScreen.y);
 	}
 	 

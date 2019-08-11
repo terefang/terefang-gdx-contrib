@@ -19,7 +19,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import terefang.gdx.contrib.g3d.IScene3dFont;
-import terefang.gdx.contrib.g3d.IScene3dViewport;
+import terefang.gdx.contrib.g3d.IScene3dContext;
 
 public class Scene3dFontImpl implements IScene3dFont
 {
@@ -33,7 +33,7 @@ public class Scene3dFontImpl implements IScene3dFont
 	}
 	
 	@Override
-	public void draw(IScene3dViewport vp, Batch batch, String text, Color textColor, float x, float y)
+	public void draw(IScene3dContext vp, Batch batch, String text, Color textColor, float x, float y)
 	{
 		this.font.setColor(textColor);
 		this.font.draw(batch, text, x, y);

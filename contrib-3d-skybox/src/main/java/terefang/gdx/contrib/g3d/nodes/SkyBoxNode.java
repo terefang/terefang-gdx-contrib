@@ -40,11 +40,12 @@ public class SkyBoxNode extends AbstractScene3dNode<SkyBoxNode>
 	}
 	
 	@Override
-	public void render(IScene3dViewport vp)
+	public void renderNode(IScene3dContext vp, int rp)
 	{
-		this.skybox.render(vp.getCamera());
-		
-		super.render(vp);
+		if((EScene3dRenderPass.RP_SKY_BOX.getValue() & rp) == EScene3dRenderPass.RP_SKY_BOX.getValue())
+		{
+			this.skybox.render(vp.getCamera());
+		}
 	}
 	
 	@Override

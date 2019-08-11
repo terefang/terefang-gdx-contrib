@@ -6,11 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="contrib-3d" />
         <module name="contrib-3d-skybox" />
         <module name="contrib-gdf" />
-        <module name="contrib-gdf-cfonts" />
-        <module name="contrib-gdf-libgdfonts" />
+        <module name="contrib-3d" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -179,12 +177,10 @@
       <module fileurl="file://$PROJECT_DIR$/contrib-3d/contrib-3d.iml" filepath="$PROJECT_DIR$/contrib-3d/contrib-3d.iml" />
       <module fileurl="file://$PROJECT_DIR$/contrib-3d-skybox/contrib-3d-skybox.iml" filepath="$PROJECT_DIR$/contrib-3d-skybox/contrib-3d-skybox.iml" />
       <module fileurl="file://$PROJECT_DIR$/contrib-gdf/contrib-gdf.iml" filepath="$PROJECT_DIR$/contrib-gdf/contrib-gdf.iml" />
-      <module fileurl="file://$PROJECT_DIR$/contrib-gdf-cfonts/contrib-gdf-cfonts.iml" filepath="$PROJECT_DIR$/contrib-gdf-cfonts/contrib-gdf-cfonts.iml" />
-      <module fileurl="file://$PROJECT_DIR$/contrib-gdf-libgdfonts/contrib-gdf-libgdfonts.iml" filepath="$PROJECT_DIR$/contrib-gdf-libgdfonts/contrib-gdf-libgdfonts.iml" />
       <module fileurl="file://$PROJECT_DIR$/terefang-gdx-contrib.iml" filepath="$PROJECT_DIR$/terefang-gdx-contrib.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="java-sdkman" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="false" project-jdk-name="1.8.222-zulu" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="VcsDirectoryMappings">

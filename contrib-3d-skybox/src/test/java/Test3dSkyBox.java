@@ -30,10 +30,11 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.math.Vector3;
 import terefang.gdx.contrib.g3d.IScene3dNode;
-import terefang.gdx.contrib.g3d.IScene3dViewport;
+import terefang.gdx.contrib.g3d.IScene3dContext;
 import terefang.gdx.contrib.g3d.impl.Scene3dFontImpl;
-import terefang.gdx.contrib.g3d.impl.Scene3dViewportImpl;
+import terefang.gdx.contrib.g3d.impl.Scene3dContextImpl;
 import terefang.gdx.contrib.g3d.nodes.ModelNode;
+import terefang.gdx.contrib.g3d.nodes.RootRenderNode;
 import terefang.gdx.contrib.g3d.nodes.SkyBoxNode;
 import terefang.gdx.contrib.g3d.nodes.TextNode;
 import terefang.gdx.contrib.g3d.skybox.SkyBox;
@@ -46,7 +47,7 @@ public class Test3dSkyBox implements ApplicationListener
 	ClasspathFileHandleResolver resolver = new ClasspathFileHandleResolver();
 	private LwjglApplication application;
 	private PerspectiveCamera camera;
-	private IScene3dViewport viewport;
+	private IScene3dContext viewport;
 	private Environment environment;
 	private CameraInputController camController;
 	private OrthographicCamera hudCam;
@@ -56,12 +57,13 @@ public class Test3dSkyBox implements ApplicationListener
 	private long stopFps;
 	private long countFps;
 	private long currentFps;
-	private IScene3dNode<SkyBoxNode> rootNode;
+	private RootRenderNode rootNode;
 	private RenderContext renderContext;
 	private Model model;
 	private ModelNode instance;
 	private ModelBatch modelBatch;
 	private TextNode textNode;
+	private SkyBoxNode skyNode;
 	
 	@Override
 	public void create()
@@ -79,11 +81,12 @@ public class Test3dSkyBox implements ApplicationListener
 		}
 		{
 			this.camera = new PerspectiveCamera(60, this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
-			this.viewport = Scene3dViewportImpl.create(this.camera);
+			this.viewport = Scene3dContextImpl.create(this.camera);
 			this.viewport.resize(this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
 			
-			this.rootNode = new SkyBoxNode.Factory().createSceneNode(null);
-			this.rootNode.getNode().setSkybox(new SkyBox(
+			this.rootNode = new RootRenderNode.Factory().createSceneNode(null);
+			this.skyNode = new SkyBoxNode.Factory().createSceneNode(this.rootNode);
+			this.skyNode.getNode().setSkybox(new SkyBox(
 					Gdx.files.internal("data/sky.0.png"),
 					Gdx.files.internal("data/sky.2.png"),
 					Gdx.files.internal("data/sky.4.png"),
@@ -116,7 +119,7 @@ public class Test3dSkyBox implements ApplicationListener
 			this.model = modelBuilder.createBox(5f, 5f, 5f,
 												new Material(ColorAttribute.createDiffuse(Color.GREEN)),
 												VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-			this.instance = new ModelNode.Factory().createSceneNode(this.rootNode);
+			this.instance = new ModelNode.Factory().createSceneNode(this.skyNode);
 			this.instance.setModelInstance(new ModelInstance(model));
 			this.instance.setRelativeTranslation(new Vector3(5,5,5));
 			
@@ -159,9 +162,7 @@ public class Test3dSkyBox implements ApplicationListener
 		
 		{
 			this.camController.update();
-			this.renderContext.begin();
-			this.rootNode.render(this.viewport);
-			this.renderContext.end();
+			this.rootNode.renderAllAtOnce(this.viewport);
 		}
 		{
 			this.batch.begin();

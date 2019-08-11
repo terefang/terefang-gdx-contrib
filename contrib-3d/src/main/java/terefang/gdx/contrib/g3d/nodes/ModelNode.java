@@ -59,17 +59,17 @@ public class ModelNode extends AbstractScene3dNode<ModelNode>
 	}
 	
 	@Override
-	public void render(IScene3dViewport vp)
+	public void renderNode(IScene3dContext vp, int rp)
 	{
 		this.updateAbsolutePosition();
 		
-		this.getModelInstance().transform.set(this.getAbsoluteTransformation());
-		
-		this.modelBatch.begin(vp.getCamera());
-		this.modelBatch.render(this.getModelInstance(), vp.getEnvironment());
-		this.modelBatch.end();
-		
-		super.render(vp);
+		if((EScene3dRenderPass.RP_AUTOMATIC.getValue() & rp) == EScene3dRenderPass.RP_AUTOMATIC.getValue())
+		{
+			this.getModelInstance().transform.set(this.getAbsoluteTransformation());
+			this.modelBatch.begin(vp.getCamera());
+			this.modelBatch.render(this.getModelInstance(), vp.getEnvironment());
+			this.modelBatch.end();
+		}
 	}
 	
 	public static class Factory implements IScene3dNodeFactory<ModelNode>

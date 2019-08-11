@@ -15,9 +15,10 @@
  */
 package terefang.gdx.contrib.g3d;
 
-import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
-
 public interface IScene3dRenderable
 {
-	void render(IScene3dViewport vp);
+	void render(IScene3dContext sctx, int rp);
+	
+	void setRenderPass(int rp);
+	int getRenderPass();
 }

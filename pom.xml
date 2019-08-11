@@ -24,8 +24,6 @@
     <version>1.9.2018.8</version>
     <modules>
         <module>contrib-gdf</module>
-        <module>contrib-gdf-libgdfonts</module>
-        <module>contrib-gdf-cfonts</module>
         <module>contrib-3d-skybox</module>
         <module>contrib-3d</module>
     </modules>
@@ -56,75 +54,5 @@
             <artifactId>gdx</artifactId>
             <version>${gdx.version}</version>
         </dependency>
-        <!--dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-platform</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-platform</artifactId>
-            <version>${gdx.version}</version>
-            <classifier>natives-desktop</classifier>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-controllers</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-controllers-desktop</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-controllers-platform</artifactId>
-            <version>${gdx.version}</version>
-            <classifier>natives-desktop</classifier>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-freetype</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-freetype-platform</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-freetype-platform</artifactId>
-            <version>${gdx.version}</version>
-            <classifier>natives-desktop</classifier>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-backend-headless</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-backend-lwjgl</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.badlogicgames.gdx</groupId>
-            <artifactId>gdx-backend-lwjgl3</artifactId>
-            <version>${gdx.version}</version>
-            <scope>test</scope>
-        </dependency-->
-
     </dependencies>
 </project>

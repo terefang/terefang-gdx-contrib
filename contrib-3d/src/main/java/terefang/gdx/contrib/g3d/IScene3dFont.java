@@ -17,11 +17,9 @@ package terefang.gdx.contrib.g3d;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 
 public interface IScene3dFont
 {
-	void draw(IScene3dViewport vp, Batch batch, String text, Color textColor, float x, float y);
+	void draw(IScene3dContext vp, Batch batch, String text, Color textColor, float x, float y);
 	
 }

@@ -17,11 +17,13 @@ package terefang.gdx.contrib.g3d;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
-public interface IScene3dViewport
+public interface IScene3dContext
 {
 	Vector2 getScreenCoordinatesFrom3DPosition(Vector3 position);
 	
@@ -40,4 +42,7 @@ public interface IScene3dViewport
 	void setEnvironment(Environment environment);
 	
 	Environment getEnvironment();
+	
+	Viewport getViewport();
+	
 }

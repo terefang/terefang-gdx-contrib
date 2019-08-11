@@ -15,11 +15,10 @@ import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.DefaultTextureBinder;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
-import com.badlogic.gdx.math.Vector3;
-import terefang.gdx.contrib.g3d.IScene3dNode;
 import terefang.gdx.contrib.g3d.impl.Scene3dFontImpl;
-import terefang.gdx.contrib.g3d.impl.Scene3dViewportImpl;
+import terefang.gdx.contrib.g3d.impl.Scene3dContextImpl;
 import terefang.gdx.contrib.g3d.nodes.ModelNode;
+import terefang.gdx.contrib.g3d.nodes.RootRenderNode;
 import terefang.gdx.contrib.g3d.nodes.TextNode;
 import terefang.gdx.contrib.gdf.GdfBitmapFont;
 
@@ -44,7 +43,7 @@ public class Test3D implements ApplicationListener
 {
 	private LwjglApplication application;
 	private PerspectiveCamera camera;
-	private Scene3dViewportImpl viewport;
+	private Scene3dContextImpl viewport;
 	private Environment environment;
 	private CameraInputController camController;
 	private OrthographicCamera hudCam;
@@ -54,10 +53,11 @@ public class Test3D implements ApplicationListener
 	private long stopFps;
 	private long countFps;
 	private long currentFps;
-	private ModelNode rootNode;
+	private RootRenderNode rootNode;
 	private RenderContext renderContext;
 	private Model model;
 	private TextNode textNode;
+	private ModelNode modelNode;
 	
 	@Override
 	public void create()
@@ -74,16 +74,18 @@ public class Test3D implements ApplicationListener
 			}
 		}
 		{
+			this.rootNode = new RootRenderNode.Factory().createSceneNode(null);
+			
 			this.camera = new PerspectiveCamera(60, this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
-			this.viewport = Scene3dViewportImpl.create(this.camera);
+			this.viewport = Scene3dContextImpl.create(this.camera);
 			this.viewport.resize(this.application.getGraphics().getWidth(), this.application.getGraphics().getHeight());
 			
 			ModelBuilder modelBuilder = new ModelBuilder();
 			this.model = modelBuilder.createBox(5f, 5f, 5f,
 												new Material(ColorAttribute.createDiffuse(Color.GREEN)),
 												VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-			this.rootNode = new ModelNode.Factory().createSceneNode(this.rootNode);
-			this.rootNode.setModelInstance(new ModelInstance(model));
+			this.modelNode = new ModelNode.Factory().createSceneNode(this.rootNode);
+			this.modelNode.setModelInstance(new ModelInstance(model));
 			
 			this.environment = new Environment();
 			this.environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
@@ -138,9 +140,7 @@ public class Test3D implements ApplicationListener
 		}
 		{
 			this.camController.update();
-			this.renderContext.begin();
-			this.rootNode.render(this.viewport);
-			this.renderContext.end();
+			this.rootNode.renderAllAtOnce(this.viewport);
 		}
 		
 		{

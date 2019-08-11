@@ -17,11 +17,12 @@ package terefang.gdx.contrib.g3d.nodes;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
 import terefang.gdx.contrib.g3d.*;
+
+import static terefang.gdx.contrib.g3d.EScene3dRenderPass.RP_FOREGROUND;
 
 public class TextNode extends AbstractScene3dNode<TextNode> implements IScene3dNode<TextNode>
 {
@@ -33,20 +34,22 @@ public class TextNode extends AbstractScene3dNode<TextNode> implements IScene3dN
 	}
 	SpriteBatch batch = new SpriteBatch();
 	@Override
-	public void render(IScene3dViewport vp)
+	public void renderNode(IScene3dContext vp, int renderPass)
 	{
 		this.updateAbsolutePosition();
 		
-		Vector2 pos = vp.getScreenCoordinatesFrom3DPosition(this.getAbsolutePosition(new Vector3()));
-		
-		if(pos!=null)
+		if((RP_FOREGROUND.getValue() & renderPass) == RP_FOREGROUND.getValue())
 		{
-			this.batch.getProjectionMatrix().setToOrtho2D(0,0, vp.getScreenWidth(), vp.getScreenHeight());
-			this.batch.begin();
-			this.getFont().draw(vp, this.batch, this.getText(), this.getTextColor(), pos.x,pos.y);
-			this.batch.end();
+			Vector2 pos = vp.getScreenCoordinatesFrom3DPosition(this.getAbsolutePosition(new Vector3()));
+			
+			if(pos!=null)
+			{
+				this.batch.getProjectionMatrix().setToOrtho2D(0,0, vp.getScreenWidth(), vp.getScreenHeight());
+				this.batch.begin();
+				this.getFont().draw(vp, this.batch, this.getText(), this.getTextColor(), pos.x,pos.y);
+				this.batch.end();
+			}
 		}
-		super.render(vp);
 	}
 	
 	String text;

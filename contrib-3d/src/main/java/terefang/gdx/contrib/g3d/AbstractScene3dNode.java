@@ -15,7 +15,6 @@
  */
 package terefang.gdx.contrib.g3d;
 
-import com.badlogic.gdx.graphics.g3d.utils.RenderContext;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
@@ -316,16 +315,37 @@ public abstract class AbstractScene3dNode<T extends IScene3dNode>
 	public abstract T clone(IScene3dNode node, IScene3dManager mgr);
 	
 	@Override
-	public void render(IScene3dViewport vp)
+	public void render(IScene3dContext vp, int rp)
 	{
+		if((rp == EScene3dRenderPass.RP_ALL_AT_ONCE.getValue())
+				|| ((this.renderPass & rp) == rp))
+		{
+			this.renderNode(vp, rp);
+		}
+		
 		if(this.getChildren()!=null)
 		{
 			for(IScene3dNode c : this.getChildren())
 			{
-				c.render(vp);
+				c.render(vp, rp);
 			}
 		}
 	}
 	
+	int renderPass = EScene3dRenderPass.RP_ALL_AT_ONCE.getValue();
+	
+	@Override
+	public int getRenderPass()
+	{
+		return renderPass;
+	}
+	
+	@Override
+	public void setRenderPass(int renderPass)
+	{
+		this.renderPass = renderPass;
+	}
+	
+	public abstract void renderNode(IScene3dContext vp, int rp);
 	
 }
