@@ -44,6 +44,18 @@ public class GdfBitmapFont extends BitmapFont
 		return create(null, "6x11");
 	}
 	
+	public static final BitmapFont create(int[][] table, int start, int cwidth)
+	{
+		BitmapFontData data = new BitmapFontData();
+		
+		Gdx2DPixmap pixmap = createFromInternal(data, table, start, table.length, table[0].length, cwidth, nextPowerOf2(table[0].length), nextPowerOf2(table.length));
+
+		Texture texture = new Texture((TextureData) (new PixmapTextureData(new Pixmap(pixmap), (Pixmap.Format) null, false, true)));
+		TextureRegion region = new TextureRegion(texture);
+		
+		return new GdfBitmapFont(data, region);
+	}
+	
 	public static final BitmapFont create(FileHandleResolver resolver, String fileName) throws IOException
 	{
 		BitmapFontData data = new BitmapFontData();
@@ -176,7 +188,7 @@ public class GdfBitmapFont extends BitmapFont
 													   int charH,
 													   int charW,
 													   int charWstep,
-													   int charHstep) throws IOException
+													   int charHstep)
 	{
 		
 		Gdx2DPixmap pixmap = createPixmap(256, 256);
