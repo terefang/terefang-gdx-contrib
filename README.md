@@ -20,12 +20,6 @@ GdfBitmapFont also includes an internal 8x8 ascii 7-bit font for fallback, if fo
 
 see modules README for further details.
 
-#### contrib-gdf-*fonts
-
-classpath packed fonts
-
-see modules README for further details.
-
 ### usage
 
 always and only current artefacts are available from local github

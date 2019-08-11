@@ -45,12 +45,13 @@ public class TestGdf implements ApplicationListener
 		batch = new SpriteBatch();
 		try
 		{
-			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/gd/large.gdfa.gz");
-			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/cfonts/C_8x10_LE.gdf.gz");
+			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/cfnt/C_6x10_LE.gdf.gz");
 			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/gd/giant.gdfa.gz");
-			font = GdfBitmapFont.create(null, "bios8x8");
-			//font = GdfBitmapFont.create(null, null);
-			font.setColor(Color.WHITE);
+			//font = GdfBitmapFont.create8x8();
+			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/ami8.gdf");
+			font = GdfBitmapFont.create(this.resolver, "assets/gdf/gd/large.gdfa.gz");
+			
+			font.setColor(Color.ROYAL);
 		}
 		catch(IOException e)
 		{
