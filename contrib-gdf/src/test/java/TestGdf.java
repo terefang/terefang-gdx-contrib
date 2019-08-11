@@ -47,9 +47,9 @@ public class TestGdf implements ApplicationListener
 		{
 			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/cfnt/C_6x10_LE.gdf.gz");
 			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/gd/giant.gdfa.gz");
-			//font = GdfBitmapFont.create8x8();
 			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/ami8.gdf");
-			font = GdfBitmapFont.create(this.resolver, "assets/gdf/gd/large.gdfa.gz");
+			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/gd/large.gdfa.gz");
+			font = GdfBitmapFont.create8x14();
 			
 			font.setColor(Color.ROYAL);
 		}

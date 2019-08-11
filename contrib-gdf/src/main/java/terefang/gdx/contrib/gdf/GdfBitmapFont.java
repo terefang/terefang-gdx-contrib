@@ -24,6 +24,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.PixmapTextureData;
+import terefang.gdx.contrib.gdf.tables.AVGA2_8x14;
 import terefang.gdx.contrib.gdf.tables.Ascii6x11Table;
 import terefang.gdx.contrib.gdf.tables.Ascii8x8Table;
 
@@ -34,6 +35,11 @@ import java.util.zip.GZIPInputStream;
 
 public class GdfBitmapFont extends BitmapFont
 {
+	public static final BitmapFont create8x14() throws IOException
+	{
+		return create(AVGA2_8x14.table, AVGA2_8x14.start, AVGA2_8x14.width);
+	}
+	
 	public static final BitmapFont create8x8() throws IOException
 	{
 		return create(null, "8x8");
@@ -48,7 +54,7 @@ public class GdfBitmapFont extends BitmapFont
 	{
 		BitmapFontData data = new BitmapFontData();
 		
-		Gdx2DPixmap pixmap = createFromInternal(data, table, start, table.length, table[0].length, cwidth, nextPowerOf2(table[0].length), nextPowerOf2(table.length));
+		Gdx2DPixmap pixmap = createFromInternal(data, table, start, table.length, table[0].length, cwidth, nextPowerOf2(cwidth), nextPowerOf2(table[0].length));
 
 		Texture texture = new Texture((TextureData) (new PixmapTextureData(new Pixmap(pixmap), (Pixmap.Format) null, false, true)));
 		TextureRegion region = new TextureRegion(texture);
