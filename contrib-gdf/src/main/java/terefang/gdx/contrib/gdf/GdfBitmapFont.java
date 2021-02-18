@@ -25,8 +25,9 @@ import com.badlogic.gdx.graphics.g2d.Gdx2DPixmap;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.PixmapTextureData;
 import terefang.gdx.contrib.gdf.tables.AVGA2_8x14;
-import terefang.gdx.contrib.gdf.tables.Ascii6x11Table;
-import terefang.gdx.contrib.gdf.tables.Ascii8x8Table;
+import terefang.gdx.contrib.gdf.tables.AVGA2_8x16;
+import terefang.gdx.contrib.gdf.tables.Ascii_6x11;
+import terefang.gdx.contrib.gdf.tables.Ascii_8x8;
 
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -35,6 +36,11 @@ import java.util.zip.GZIPInputStream;
 
 public class GdfBitmapFont extends BitmapFont
 {
+	public static final BitmapFont create8x16() throws IOException
+	{
+		return create(AVGA2_8x16.table, AVGA2_8x16.start, AVGA2_8x16.width);
+	}
+	
 	public static final BitmapFont create8x14() throws IOException
 	{
 		return create(AVGA2_8x14.table, AVGA2_8x14.start, AVGA2_8x14.width);
@@ -87,15 +93,15 @@ public class GdfBitmapFont extends BitmapFont
 		
 		if("8x8".equalsIgnoreCase(fileName))
 		{
-			pixmap = createFromInternal(data, Ascii8x8Table.table, Ascii8x8Table.start, Ascii8x8Table.table.length, Ascii8x8Table.table[0].length, Ascii8x8Table.width, Ascii8x8Table.wstep, Ascii8x8Table.hstep);
+			pixmap = createFromInternal(data, Ascii_8x8.table, Ascii_8x8.start, Ascii_8x8.table.length, Ascii_8x8.table[0].length, Ascii_8x8.width, Ascii_8x8.wstep, Ascii_8x8.hstep);
 		}
 		else if("6x11".equalsIgnoreCase(fileName))
 		{
-			pixmap = createFromInternal(data, Ascii6x11Table.table, Ascii6x11Table.start, Ascii6x11Table.table.length, Ascii6x11Table.table[0].length, Ascii6x11Table.width, Ascii6x11Table.wstep, Ascii6x11Table.hstep);
+			pixmap = createFromInternal(data, Ascii_6x11.table, Ascii_6x11.start, Ascii_6x11.table.length, Ascii_6x11.table[0].length, Ascii_6x11.width, Ascii_6x11.wstep, Ascii_6x11.hstep);
 		}
 		else if(fileName == null || ins == null)
 		{
-			pixmap = createFromInternal(data, Ascii6x11Table.table, Ascii6x11Table.start, Ascii6x11Table.table.length, Ascii6x11Table.table[0].length, Ascii6x11Table.width, Ascii6x11Table.wstep, Ascii6x11Table.hstep);
+			pixmap = createFromInternal(data, Ascii_6x11.table, Ascii_6x11.start, Ascii_6x11.table.length, Ascii_6x11.table[0].length, Ascii_6x11.width, Ascii_6x11.wstep, Ascii_6x11.hstep);
 		}
 		else if(fileName.endsWith(".gdfa"))
 		{
@@ -151,7 +157,7 @@ public class GdfBitmapFont extends BitmapFont
 		data.lineHeight = charH;
 		data.imagePaths = new String[0];
 		data.descent = 0.0F;
-		data.spaceWidth = (float) charW + 1;
+		data.spaceXadvance = (float) charW + 1;
 		data.xHeight = (charH / 2) + 1;
 		data.capHeight = charH;
 		data.ascent = 0;

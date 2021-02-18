@@ -13,23 +13,23 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.badlogicgames.gdx:gdx-platform:1.9.8" level="project" />
+    <orderEntry type="library" name="Maven: com.badlogicgames.gdx:gdx-platform:1.9.14" level="project" />
     <orderEntry type="module" module-name="contrib-gdf" scope="TEST" />
     <orderEntry type="module" module-name="contrib-3d" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.8" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.8" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl:2.9.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.badlogicgames.gdx:gdx-platform:natives-desktop:1.9.14" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.badlogicgames.gdx:gdx-backend-lwjgl:1.9.14" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl:2.9.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-windows:2.9.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-linux:2.9.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl-platform:natives-osx:2.9.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.java.jinput:jinput:2.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.java.jutils:jutils:1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.java.jinput:jinput-platform:natives-linux:2.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.java.jinput:jinput-platform:natives-windows:2.0.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.java.jinput:jinput-platform:natives-osx:2.0.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl_util:2.9.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.lwjgl.lwjgl:lwjgl_util:2.9.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.badlogicgames.jlayer:jlayer:1.0.1-gdx" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jcraft:jorbis:0.0.17" level="project" />
-    <orderEntry type="library" name="Maven: com.badlogicgames.gdx:gdx:1.9.8" level="project" />
+    <orderEntry type="library" name="Maven: com.badlogicgames.gdx:gdx:1.9.14" level="project" />
   </component>
 </module>

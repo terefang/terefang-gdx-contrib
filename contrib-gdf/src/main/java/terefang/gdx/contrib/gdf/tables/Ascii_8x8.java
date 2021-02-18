@@ -15,7 +15,7 @@
  */
 package terefang.gdx.contrib.gdf.tables;
 
-public class Ascii8x8Table
+public class Ascii_8x8
 {
 	public static int start = 0;
 	public static int height = 8;

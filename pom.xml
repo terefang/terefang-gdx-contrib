@@ -26,12 +26,13 @@
         <module>contrib-gdf</module>
         <module>contrib-3d-skybox</module>
         <module>contrib-3d</module>
+        <module>contrib-md2</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <properties>
-        <gdx.version>1.9.8</gdx.version>
+        <gdx.version>1.9.14</gdx.version>
     </properties>
 
     <build>

@@ -15,7 +15,7 @@
  */
 package terefang.gdx.contrib.gdf.tables;
 
-public class Ascii6x11Table
+public class Ascii_6x11
 {
 	public static int start = 32;
 	public static int height = 11;
