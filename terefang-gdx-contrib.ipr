@@ -15,7 +15,7 @@
     <bytecodeTargetLevel>
       <module name="contrib-3d" target="8" />
       <module name="contrib-3d-skybox" target="6" />
-      <module name="contrib-gdf" target="6" />
+      <module name="contrib-gdf" target="8" />
       <module name="contrib-gdf-cfonts" target="6" />
       <module name="contrib-gdf-libgdfonts" target="6" />
       <module name="contrib-md2" target="6" />

@@ -50,8 +50,11 @@ public class TestGdf implements ApplicationListener
 			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/ami8.gdf");
 			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/gd/large.gdfa.gz");
 			//font = GdfBitmapFont.create8x16();
-			font = GdfBitmapFont.create(this.resolver, "assets/gdf/pet.gdfa");
-			
+			//font = GdfBitmapFont.create(this.resolver, "assets/gdf/pet.gdfa");
+			font = GdfBitmapFont.create(this.resolver, "assets/gdf/display.gdf");
+
+			//font = GdfBitmapFont.create((f)->Gdx.files.internal(f), "assets/gdf/display.gdf");
+
 			font.setColor(Color.ROYAL);
 		}
 		catch(IOException e)
